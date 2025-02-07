@@ -1,0 +1,148 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Topic Overview{% endblock %}
+
+{% block body %}
+    <div class="content-wrapper">
+        <h1 class="page-title text-center">Topic Overview</h1>
+
+        <div class="topics-grid">
+            {% for topic in topics %}
+                <div class="topic-card">
+                    <div class="card-body">
+                        <h2 class="topic-title">{{ topic.label }}</h2>
+                        <p class="topic-id">ID: {{ topic.id }}</p>
+                        <div class="card-actions">
+                            <a href="{{ path('topic_show', {'id': topic.id}) }}" class="btn btn-info btn-sm">Details</a>
+                            <a href="{{ path('topic_edit', {'id': topic.id}) }}" class="btn btn-warning btn-sm">Edit</a>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                <div class="no-records">
+                    <p>No topics available at the moment.</p>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="button-group text-center mt-4">
+            <a href="{{ path('topic_new') }}" class="btn btn-create">Create New Topic</a>
+        </div>
+    </div>
+
+    <style>
+        .content-wrapper {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: #f0f4f7;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            color: #222;
+            margin-bottom: 2rem;
+        }
+
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .topic-card {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .topic-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .topic-title {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .topic-id {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .card-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            font-size: 14px;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+
+        .btn-info {
+            background-color: #007bff;
+            color: white;
+            border: none;
+        }
+
+        .btn-info:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-warning {
+            background-color: #ffc107;
+            color: white;
+            border: none;
+        }
+
+        .btn-warning:hover {
+            background-color: #e0a800;
+        }
+
+        .btn-create {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 18px;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+
+        .btn-create:hover {
+            background-color: #218838;
+        }
+
+        .no-records {
+            grid-column: span 3;
+            text-align: center;
+            font-size: 1.2rem;
+            color: #777;
+        }
+
+        .button-group {
+            margin-top: 30px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-4 {
+            margin-top: 2rem;
+        }
+    </style>
+{% endblock %}

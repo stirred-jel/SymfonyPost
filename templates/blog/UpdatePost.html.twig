@@ -1,0 +1,145 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Update Post{% endblock %}
+
+{% block body %}
+    <div class="main-container">
+        <h1 class="text-center title">Update Post</h1>
+
+        {{ form_start(form) }}
+        <div class="form-wrapper">
+            <div class="input-group">
+                {{ form_label(form.headline, 'Headline') }}
+                {{ form_widget(form.headline, {'attr': {'class': 'form-input'}}) }}
+            </div>
+
+            <div class="input-group">
+                {{ form_label(form.summary, 'Summary') }}
+                {{ form_widget(form.summary, {'attr': {'class': 'form-input'}}) }}
+            </div>
+
+            <div class="input-group">
+                {{ form_label(form.content, 'Content') }}
+                {{ form_widget(form.content, {'attr': {'class': 'form-input'}}) }}
+            </div>
+
+            <div class="input-group">
+                {{ form_label(form.category, 'Category') }}
+                {{ form_widget(form.category, {'attr': {'class': 'form-input select-input'}}) }}
+            </div>
+
+            <div class="input-group">
+                {{ form_label(form.tags, 'Labels') }}
+                {{ form_widget(form.tags, {'attr': {'class': 'form-input'}}) }}
+            </div>
+
+            <div class="button-group text-center">
+                <button type="submit" class="btn btn-success">Save Changes</button>
+                <a href="{{ path('post_index') }}" class="btn btn-info ml-3">Back to Posts</a>
+            </div>
+        </div>
+        {{ form_end(form) }}
+
+        <div class="delete-section text-center mt-4">
+            <form method="post" action="{{ path('post_delete', {'id': post.id}) }}" onsubmit="return confirm('Are you sure you want to remove this post?');">
+                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ post.id) }}">
+                <button class="btn btn-danger">Remove</button>
+            </form>
+        </div>
+    </div>
+
+    <style>
+        .main-container {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 30px;
+            background: #f0f8ff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .title {
+            margin-bottom: 1.5rem;
+            font-size: 2.5rem;
+            color: #444;
+        }
+
+        .form-wrapper {
+            margin-bottom: 2.5rem;
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .input-group label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: #222;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 14px;
+            font-size: 18px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        .select-input {
+            appearance: none;
+        }
+
+        .button-group {
+            margin-top: 2.5rem;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            font-size: 18px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .btn-success {
+            background-color: #28a745;
+            color: #fff;
+        }
+
+        .btn-success:hover {
+            background-color: #218838;
+        }
+
+        .btn-info {
+            background-color: #17a2b8;
+            color: #fff;
+        }
+
+        .btn-info:hover {
+            background-color: #138496;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            color: #fff;
+        }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-4 {
+            margin-top: 2rem;
+        }
+
+        .ml-3 {
+            margin-left: 1.25rem;
+        }
+    </style>
+{% endblock %}

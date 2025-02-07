@@ -1,0 +1,129 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Create{% endblock %}
+
+{% block body %}
+    <div class="content-wrapper">
+        <h1 class="page-title">Craft Your New Post</h1>
+
+        {{ form_start(form) }}
+        <div class="form-grid">
+            <div class="form-item">
+                {{ form_label(form.headline, 'Post Title') }}
+                {{ form_widget(form.headline, {'attr': {'class': 'input-field'}}) }}
+            </div>
+
+            <div class="form-item">
+                {{ form_label(form.content, 'Body Text') }}
+                {{ form_widget(form.content, {'attr': {'class': 'input-field'}}) }}
+            </div>
+
+            <div class="form-item">
+                {{ form_label(form.summary, 'Short Description') }}
+                {{ form_widget(form.summary, {'attr': {'class': 'input-field'}}) }}
+            </div>
+
+            <div class="form-item">
+                {{ form_label(form.category, 'Category') }}
+                {{ form_widget(form.category, {'attr': {'class': 'select-field'}}) }}
+            </div>
+
+            <div class="form-item">
+                {{ form_label(form.tags, 'Tags') }}
+                {{ form_widget(form.tags, {'attr': {'class': 'select-field'}}) }}
+            </div>
+
+            <div class="form-item full-width">
+                <button type="submit" class="btn btn-primary">Publish</button>
+            </div>
+        </div>
+        {{ form_end(form) }}
+
+        <div class="button-group text-center">
+            <a href="{{ path('post_index') }}" class="btn btn-secondary">Back to Overview</a>
+        </div>
+    </div>
+
+    <style>
+        .content-wrapper {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: #f1f1f1;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #222;
+            text-align: center;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .form-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-item.full-width {
+            grid-column: span 2;
+        }
+
+        .form-label {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #444;
+        }
+
+        .input-field,
+        .select-field {
+            width: 100%;
+            padding: 15px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        .button-group {
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            font-size: 18px;
+            border-radius: 8px;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: white;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            color: white;
+            border: none;
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+    </style>
+{% endblock %}

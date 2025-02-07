@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Welcome to Your App{% endblock %}
+
+{% block body %}
+<div class="content-wrapper">
+    <h1 class="greeting-title">Hello! ✅</h1>
+
+</div>
+
+<style>
+    .content-wrapper {
+        margin: 2em auto;
+        max-width: 700px;
+        width: 90%;
+        font: 1rem 'Arial', sans-serif;
+        background-color: #f9f9f9;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .greeting-title {
+        font-size: 2rem;
+        color: #333;
+        text-align: center;
+    }
+
+    .message {
+        font-size: 1.2rem;
+        color: #555;
+        text-align: center;
+    }
+
+    .path-list {
+        margin-top: 1em;
+        list-style-type: none;
+        padding: 0;
+        font-size: 1rem;
+        color: #666;
+    }
+
+    .path-list li {
+        margin-bottom: 0.5em;
+        background: #e0e0e0;
+        padding: 5px;
+        border-radius: 5px;
+    }
+
+    .path-list code {
+        background: #272727;
+        color: #fff;
+        padding: 2px 6px;
+        border-radius: 4px;
+    }
+</style>
+{% endblock %}

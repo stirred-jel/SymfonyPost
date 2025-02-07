@@ -1,0 +1,123 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Topic{% endblock %}
+
+{% block body %}
+    <div class="content-wrapper">
+        <h1 class="page-title text-center">Edit Topic</h1>
+
+        {{ form_start(form) }}
+        <div class="form-wrapper">
+            <div class="form-group">
+                {{ form_label(form.label, 'Topic Name') }}
+                <div class="input-group">
+                    {{ form_widget(form.label, {'attr': {'class': 'form-input'}}) }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.description, 'Description') }}
+                <div class="input-group">
+                    {{ form_widget(form.description, {'attr': {'class': 'form-input'}}) }}
+                </div>
+            </div>
+
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+            </div>
+        </div>
+        {{ form_end(form) }}
+
+        <div class="button-group text-center">
+            <a href="{{ path('topic_index') }}" class="btn btn-secondary">Back to Overview</a>
+        </div>
+
+        <div class="delete-section text-center">
+            {{ include('topic/_delete_form.html.twig') }}
+        </div>
+    </div>
+
+    <style>
+        .content-wrapper {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: #e3f2fd;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+
+        .form-wrapper {
+            margin-top: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        .input-group {
+            margin-bottom: 10px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 15px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 15px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: white;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            color: white;
+            border: none;
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .button-group {
+            margin-top: 20px;
+        }
+
+        .delete-section {
+            margin-top: 20px;
+        }
+    </style>
+{% endblock %}

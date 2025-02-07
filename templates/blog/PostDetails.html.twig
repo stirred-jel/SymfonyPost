@@ -1,0 +1,127 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Post Details{% endblock %}
+
+{% block body %}
+    <div class="main-container">
+        <h1 class="text-center page-title">Post Details</h1>
+
+        <table class="details-table">
+            <tbody>
+            <tr>
+                <th>ID</th>
+                <td>{{ post.id }}</td>
+            </tr>
+            <tr>
+                <th>Headline</th>
+                <td>{{ post.headline }}</td>
+            </tr>
+            {% if post.category %}
+                <tr>
+                    <th>Category</th>
+                    <td>{{ post.category.label | capitalize }}</td>
+                </tr>
+            {% endif %}
+            <tr>
+                <th>Summary</th>
+                <td>{{ post.summary }}</td>
+            </tr>
+            <tr>
+                <th>Content</th>
+                <td>{{ post.content }}</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div class="button-group text-center mt-4">
+            <a href="{{ path('post_index') }}" class="btn btn-back">Back to Posts</a>
+            <a href="{{ path('post_edit', {'id': post.id}) }}" class="btn btn-edit ml-3">Edit</a>
+        </div>
+
+        <div class="delete-section text-center mt-4">
+            {{ include('post/_delete_form.html.twig') }}
+        </div>
+    </div>
+
+    <style>
+        .main-container {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 25px;
+            background-color: #f3f4f6;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .page-title {
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            color: #333;
+        }
+
+        .details-table {
+            width: 100%;
+            background-color: #fff;
+            border-collapse: collapse;
+        }
+
+        .details-table th {
+            background-color: #dfe6e9;
+            font-weight: bold;
+            padding: 15px;
+        }
+
+        .details-table td {
+            padding: 15px;
+            border-top: 1px solid #ccc;
+            vertical-align: middle;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .btn-back {
+            background-color: #3498db;
+            color: #fff;
+        }
+
+        .btn-back:hover {
+            background-color: #2980b9;
+        }
+
+        .btn-edit {
+            background-color: #f39c12;
+            color: #fff;
+        }
+
+        .btn-edit:hover {
+            background-color: #e67e22;
+        }
+
+        .btn-danger {
+            background-color: #e74c3c;
+            color: #fff;
+        }
+
+        .btn-danger:hover {
+            background-color: #c0392b;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-4 {
+            margin-top: 2rem;
+        }
+
+        .ml-3 {
+            margin-left: 1.5rem;
+        }
+    </style>
+{% endblock %}
